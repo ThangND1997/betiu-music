@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Betiu Music Player</title>
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.1.2/css/all.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./stype.action.css">
+</head>
+<body>
+    <div id="toast"></div>
+    <div id="loading">
+        <img class="loading-img" src="https://jchen23-stf.github.io/img/loading.gif" alt="">
+    </div>
+    <div id="edit-modal">
+        <form class="edit-modal-profile">
+            <div class="profile-editer profile-avatar">
+                <p class="profile-editer-title profile-avatar-title">Avatar</p>
+                <label for="upload-avatar" class="profile-editer-content profile-avatar-content">
+                    <img class="profile-avatar-img" src="https://tpmobile.vn/wp-content/uploads/2020/09/esk1U.jpg" alt="">
+                    <div class="profile-avatar-icon">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </div>
+                </label>
+				<input type="file" id="upload-avatar" style="display: none;">
+            </div>
+            <div class="profile-editer profile-name">
+                <label for="exampleFormControlInput1" class="form-label profile-editer-title profile-name-title">Name</label>
+                <input type="text" class="form-control profile-editer-content marg profile-name-content" id="exampleFormControlInput1" placeholder="Thang Nguyen Example">
+            </div>
+            <div class="profile-editer profile-phone">
+                <label for="exampleFormControlInput1" class="form-label profile-editer-title profile-phone-title">Phone</label>
+                <input type="tel" class="form-control profile-editer-content marg profile-phone-content" id="exampleFormControlInput1" placeholder="+84 364XX XXXX">
+            </div>
+            <div class="profile-controls">
+                <button type="button" class="btn btn-light edit-profile-btn edit-profile-btn-close">Cancel</button>
+                <!-- disabled -->
+                <button type="submit" class="btn btn-primary edit-profile-btn edit-profile-btn-save">Save</button> 
+            </div>
+        </form>
+    </div>
+    <div class="account dropdown">
+        <p class="log-name">Hello,</p>
+        <img class="log-img tn btn-secondary dropdown-toggle" src="" alt="" data-bs-toggle="dropdown"
+            aria-expanded="false">
+        <div class="log-modal"></div>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item drop-top-100-list" href="#">Top 100</a></li>
+            <li><a class="dropdown-item drop-top-trending-list" href="#">Top Trending</a></li>
+            <li>
+                <span class="dropdown-item edit-profile">Edit Profile</span>
+            </li>
+            <li><a class="dropdown-item log-out">Log Out</a></li>
+        </ul>
+    </div>
+    <div id="allPage" class="allPage">
+        <div class="main">
+            <div class="leftBar">
+                <h3 class="leftBar_title"><i class="fa-solid fa-align-left" style="margin-right: 12px;"></i>BETIU MUSIC
+                </h3>
+                <div class="leftBar_recommend">
+                    <span class="leftBar_title2">Recommend</span>
+                    <ul>
+                        <li class="leftBar_recommend-item item1">For you</li>
+                        <li class="leftBar_recommend-item item2">Library</li>
+                        <li class="leftBar_recommend-item item3">Radio Station</li>
+                        <li class="leftBar_recommend-item item4">Music Video</li>
+                    </ul>
+                </div>
+                <div class="leftBar_mymusic">
+                    <span class="leftBar_title2">My music</span>
+                    <ul>
+                        <li class="leftBar_mymusic-item">Liked song</li>
+                        <li class="leftBar_mymusic-item">Album</li>
+                        <li class="leftBar_mymusic-item">Artist</li>
+                        <li class="leftBar_mymusic-item">Recent</li>
+
+
+                    </ul>
+                </div>
+                <div class="leftBar_playlist">
+                    <span class="leftBar_title2">Playlist</span>
+                    <ul>
+                        <li class="leftBar_playlist-item">Hip-hop</li>
+                        <li class="leftBar_playlist-item">Jazz</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="container">
+                <header>
+                    <form class="search">
+                        <input type="text" placeholder="Start search here" class="search-value">
+                        <div class="btn-search" type="submit">
+                            <i class="fa-regular fa-magnifying-glass"></i>
+                        </div>
+                    </form>
+                </header>
+                <h2 class="topMusic-title">Top US-UK BeTiu 2022</h2>
+                <div class="topMusic">
+                    <div class="topMusic_item--img">
+                        <img class="topMusic_item--img--thumb" alt="">
+                    </div>
+                    <div class="topMusic_item--song">
+
+
+
+
+                    </div>
+                </div>
+                <h3 class="recentPlayed_title">Recent Played </h3>
+                <div class="recentPlayed-icon"></div>
+                <div class="recentPlayed">
+                </div>
+                <h3 class="powered"></h3>
+            </div>
+            <div class="rightBar">
+                <h3 class="listArtist_title">Recent Singers</h3>
+                <div class="listArtist">
+                    <div class="listArtist_item" onclick="renderListMusicOf('sontung',0)">
+                        <div class="listArtist_item-img"><img class="listArtist_item-img" src="./img/sontung/ava.jpg"
+                                alt=""></div>
+                        <div class="listArtist_item-name">
+                            <span class="listArtist_item-nameSong">Sơn Tùng</span>
+                            <span class="listArtist_item-nameArtist">3 minutes ago</span>
+                        </div>
+                        <div class="listArtist_item-iconRunning"><img src="" /></div>
+                    </div>
+                    <div class="listArtist_item" onclick="renderListMusicOf('amee',1)">
+                        <div class="listArtist_item-img"><img class="listArtist_item-img" src="./img/amee/ava.webp"
+                                alt=""></div>
+                        <div class="listArtist_item-name">
+                            <span class="listArtist_item-nameSong">AMEE</span>
+                            <span class="listArtist_item-nameArtist">1 minutes ago</span>
+                        </div>
+                        <div class="listArtist_item-iconRunning"><img src="" /></div>
+                    </div>
+                    <div class="listArtist_item" onclick="renderListMusicOf('dinhdung',2)">
+                        <div class="listArtist_item-img"><img class="listArtist_item-img" src="./img/dinhdung/ava.jpg"
+                                alt=""></div>
+                        <div class="listArtist_item-name">
+                            <span class="listArtist_item-nameSong">Đình Dũng</span>
+                            <span class="listArtist_item-nameArtist">4 minutes ago</span>
+                        </div>
+                        <div class="listArtist_item-iconRunning"><img src="" /></div>
+                    </div>
+                    <div class="listArtist_item" onclick="renderListMusicOf('ttbinh',3)">
+                        <div class="listArtist_item-img"><img class="listArtist_item-img" src="./img/ttbinh/ava.jpg"
+                                alt=""></div>
+                        <div class="listArtist_item-name">
+                            <span class="listArtist_item-nameSong">Trịnh Thăng Bình</span>
+                            <span class="listArtist_item-nameArtist">2 minutes ago</span>
+                        </div>
+                        <div class="listArtist_item-iconRunning"><img src="" /></div>
+                    </div>
+                    <div class="listArtist_item" onclick="renderListMusicOf('ducphuc',4)">
+                        <div class="listArtist_item-img"><img class="listArtist_item-img" src="./img/ducphuc/ava.jpg"
+                                alt=""></div>
+                        <div class="listArtist_item-name">
+                            <span class="listArtist_item-nameSong">Đức Phúc</span>
+                            <span class="listArtist_item-nameArtist">6 minutes ago</span>
+                        </div>
+                        <div class="listArtist_item-iconRunning"><img src="" /></div>
+                    </div>
+
+                </div>
+                <h3 class="anotherSong_title">Top Music Viet</h3>
+                <div class="anotherSong">
+
+                    <!-- <div class="anotherSong_item" onclick="renderAnotherSong(0)">
+                    <div class="anotherSong_item-img"><img class="anotherSong_item-img" src="./img/sontung/ava.jpg" alt=""></div>
+                    <div class="anotherSong_item-name">
+                        <span class="anotherSong_item-nameSong">Chac ai do se ve</span>
+                        <span class="anotherSong_item-nameArtist">SONTUNG</span>
+                    </div>
+                    <div class="anotherSong_item-iconRunning"></div>
+                </div>
+                <div class="anotherSong_item" onclick="renderAnotherSong(0)">
+                    <div class="anotherSong_item-img"><img class="anotherSong_item-img" src="./img/sontung/ava.jpg" alt=""></div>
+                    <div class="anotherSong_item-name">
+                        <span class="anotherSong_item-nameSong">Chac ai do se ve</span>
+                        <span class="anotherSong_item-nameArtist">SONTUNG</span>
+                    </div>
+                    <div class="anotherSong_item-iconRunning"></div>
+                </div>
+                <div class="anotherSong_item" onclick="renderAnotherSong(0)">
+                    <div class="anotherSong_item-img"><img class="anotherSong_item-img" src="./img/sontung/ava.jpg" alt=""></div>
+                    <div class="anotherSong_item-name">
+                        <span class="anotherSong_item-nameSong">Chac ai do se ve</span>
+                        <span class="anotherSong_item-nameArtist">SONTUNG</span>
+                    </div>
+                    <div class="anotherSong_item-iconRunning"></div>
+                </div>
+                <div class="anotherSong_item" onclick="renderAnotherSong(0)">
+                    <div class="anotherSong_item-img"><img class="anotherSong_item-img" src="./img/sontung/ava.jpg" alt=""></div>
+                    <div class="anotherSong_item-name">
+                        <span class="anotherSong_item-nameSong">Chac ai do se ve</span>
+                        <span class="anotherSong_item-nameArtist">SONTUNG</span>
+                    </div>
+                    <div class="anotherSong_item-iconRunning"></div>
+                </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="playerBar">
+
+        <div class="rangeBar">
+            <div class="currTime">00:00</div>
+            <!-- <div class="music_bar"><input type="range" name="songBar" id="songBar"></div> -->
+            <input type="range" step="1" class="seekbar" value="0" oninput="handleSeekBar()">
+            <div class="durrTime">00:00</div>
+        </div>
+        <audio id="songFile"></audio>
+        <div class="playerBar_item">
+            <div class="playerBar_item-info">
+                <div class="playerBar_item-img"><img class="playerBar_item-img--thumb" alt=""></div>
+                <div class="playerBar_item-name">
+                    <div class="playerBar_item-name--nameSong">Chac ai do se ve</div>
+                    <div class="playerBar_item-name--nameArtist">Son Tung</div>
+                </div>
+            </div>
+            <div class="playerBar_item-action">
+                <div class="random"><i class="fa-light fa-shuffle"></i></div>
+                <div class="back playerBar_item-action--size"><i class="fa-solid fa-backward-fast"></i></div>
+                <div id="pause" class="pause playerBar_item-action--pausesize"><i class="fa-solid fa-circle-play"></i>
+                </div>
+                <div class="next playerBar_item-action--size"><i class="fa-solid fa-forward-fast"></i></div>
+                <div class="replay"><i class="fa-light fa-arrows-repeat"></i></div>
+            </div>
+            <div class="playerBar_item-vol">
+                <div class="playerBar_item-vol--icon" onclick="muteVol()"><i class="fa-solid fa-volume-high"></i></div>
+                <div class="playerBar_item-vol--bar"><input type="range" name="" id="volRange"
+                        onchange="changevolume(this.value)"></div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+<script  src="./main.js"></script>
+
+</html>
